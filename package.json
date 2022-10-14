@@ -1,0 +1,11 @@
+{
+  "name": "desafio3-lavie-gamaacademy",
+  "version": "1.0.0",
+  "description": "Criacao de API para o desafio 3 da turma 45 da Gama Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
