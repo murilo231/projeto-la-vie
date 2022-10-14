@@ -12,15 +12,21 @@ const pacientesController = {
   },
 
   //Cadastrar Pacientes
-  cadastrarPacientes(req, res) {
+  async cadastrarPacientes(req, res) {
     console.log(req.body)
     res.json(req.body)
   },
 
   //Atualizar Pacientes
-  atualizarPacientes(req, res) {
+  async atualizarPacientes(req, res) {
     const { id } = req.params
     res.send(`Informações do paciente com ID: ${id} atualizadas com sucesso!`)
+  },
+
+  //Deletar Paciente
+  async deletarPacientes(req, res) {
+    const { id } = req.params
+    res.send(`Informações do paciente com ID: ${id} deletadas com sucesso!`)
   }
 }
 

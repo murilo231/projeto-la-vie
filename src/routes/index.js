@@ -6,5 +6,6 @@ routes.get('/pacientes', pacientesController.listarPacientes)
 routes.get('/pacientes/:id', pacientesController.listarPacientesId)
 routes.post('/pacientes', pacientesController.cadastrarPacientes)
 routes.put('/pacientes/:id', pacientesController.atualizarPacientes)
+routes.delete('/pacientes/:id', pacientesController.deletarPacientes)
 
 module.exports = routes
