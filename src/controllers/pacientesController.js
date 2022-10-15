@@ -13,6 +13,7 @@ const pacientesController = {
 
   //Cadastrar Pacientes
   async cadastrarPacientes(req, res) {
+    const { nome, email, idade } = req.body
     console.log(req.body)
     res.json(req.body)
   },

@@ -1,7 +1,10 @@
 const express = require('express')
+const db = require('./database/db')
 const routes = require('./routes')
 
 const app = express()
+
+db.hasConection()
 
 app.use(express.json())
 app.use(routes)
