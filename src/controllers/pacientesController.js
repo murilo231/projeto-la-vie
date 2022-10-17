@@ -1,33 +1,105 @@
 const pacientesController = {
   //Listar todos Pacientes
   async listarPacientes(req, res) {
-    res.send('Listando todos Pacientes ... Aguarde 1 minuto.')
+    try {
+      const listaPaciente = await Paciente.findAll()
+      res.status(200).json(listaPaciente)
+    } catch (error) {
+      res.status(400).json({ error })
+    }
   },
 
   //Listar Pacientes por ID
   async listarPacientesId(req, res) {
-    const { id } = req.params
-    console.log(id)
-    res.send(`Listando pacientes que possui ID: ${id}... aguarde outro minuto.`)
+    try {
+      const { id } = req.params
+      const listaPaciente = await Paciente.findAll({
+        where: {
+          id: id
+        }
+      })
+
+      if (!listaPaciente) {
+        res.status(404).json('Id não encontrado. Por favor tente novamente.')
+      } else {
+        res.status(200).json(listaPaciente)
+      }
+    } catch (error) {
+      res.status(404).json({ error })
+    }
   },
 
   //Cadastrar Pacientes
   async cadastrarPacientes(req, res) {
-    const { nome, email, idade } = req.body
-    console.log(req.body)
-    res.json(req.body)
+    try {
+      const { nome, email, idade } = req.body
+      const casdastraPaciente = await Paciente.create({
+        nome,
+        email,
+        idade
+      })
+
+      if (!casdastraPaciente) {
+        res
+          .status(400)
+          .json('Houve um erro na requisição. Por favor, tente novamente.')
+      } else {
+        res.status(201).json(`Paciente ${nome} cadastrado com sucesso!`)
+      }
+    } catch (error) {
+      res.status(400).json({ error })
+    }
   },
 
   //Atualizar Pacientes
   async atualizarPacientes(req, res) {
-    const { id } = req.params
-    res.send(`Informações do paciente com ID: ${id} atualizadas com sucesso!`)
+    try {
+      const { id } = req.params
+      const { nome, email, idade } = req.body
+
+      const AtualizaPaciente = await Paciente.findOne({
+        where: {
+          id: id
+        }
+      })
+
+      if (!AtualizaPaciente) {
+        res
+          .status(400)
+          .json('Houve um erro na requisição. Por favor, tente novamente.')
+      } else {
+        await Paciente.update({ nome, email, idade }, { where: { id } })
+      }
+
+      res
+        .status(200)
+        .json(`Informações do paciente ${nome} atualizadas com sucesso!`)
+    } catch (error) {
+      res.status(400).json({ error })
+    }
   },
 
   //Deletar Paciente
   async deletarPacientes(req, res) {
-    const { id } = req.params
-    res.send(`Informações do paciente com ID: ${id} deletadas com sucesso!`)
+    try {
+      const { id } = req.params
+
+      const deletar = await Paciente.destroy({
+        where: {
+          id: id
+        }
+      })
+
+      if (!deletar) {
+        res.status(404).json('Id não encontrado. Por favor, tente novamente.')
+      } else {
+        res
+          .status(204)
+          .json(`Informações do paciente ${nome} excluidas com sucesso!`)
+      }
+    } catch (error) {
+      res.status(404).json({ error })
+    }
   }
 }
 
