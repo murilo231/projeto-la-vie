@@ -1,3 +1,5 @@
+const Paciente = require('../models/Paciente')
+
 const pacientesController = {
   //Listar todos Pacientes
   async listarPacientes(req, res) {
@@ -83,7 +85,6 @@ const pacientesController = {
   async deletarPacientes(req, res) {
     try {
       const { id } = req.params
-
       const deletar = await Paciente.destroy({
         where: {
           id: id
@@ -91,11 +92,9 @@ const pacientesController = {
       })
 
       if (!deletar) {
-        res.status(404).json('Id não encontrado. Por favor, tente novamente.')
+        res.status(404).json('Id não encontrado.')
       } else {
-        res
-          .status(204)
-          .json(`Informações do paciente ${nome} excluidas com sucesso!`)
+        res.status(204).json('Paciente excluído com sucesso!')
       }
     } catch (error) {
       res.status(404).json({ error })

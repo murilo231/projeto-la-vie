@@ -1,8 +1,7 @@
 const db = require('../database/db')
 const { DataTypes } = require('sequelize')
-const database = require('../database/db')
 
-const Paciente = database.define('paciente', {
+const Paciente = db.define('paciente', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -18,7 +17,7 @@ const Paciente = database.define('paciente', {
     allowNull: false
   },
   idade: {
-    type: DataTypes.DATE,
+    type: DataTypes.INTEGER,
     allowNull: false
   }
 })
