@@ -12,6 +12,6 @@ routes.delete('/pacientes/:id', pacientesController.deletarPacientes)
 
 routes.get('/atendimentos', atendimentoController.listarAtendimentos)
 routes.get('/atendimentos/:id', atendimentoController.listarUmAtendimento)
-routes.post('/atendimentos', auth, atendimentoController.cadastrarAtendimento)
+routes.post('/atendimentos', atendimentoController.cadastrarAtendimento)
 
 module.exports = routes
