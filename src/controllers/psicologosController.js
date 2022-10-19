@@ -7,8 +7,8 @@ const psicologosController = {
     try {
       const listaPsicologos = await Psicologos.findAll()
       res.status(200).json(listaPsicologos)
-    } catch {
-      error
+    } catch (error) {
+      console.log(error)
       res.status(404).json({ error })
     }
   },
@@ -19,11 +19,11 @@ const psicologosController = {
       const { id } = req.params
       const listaDePsicologos = await Psicologos.findAll({
         where: {
-          id: id
+          id
         }
       })
 
-      if (listaDePsicologos) {
+      if (!listaDePsicologos) {
         return res.status(404).json('Id não encontrado')
       } else {
         res.status(200).json(listaDePsicologos)
@@ -35,16 +35,24 @@ const psicologosController = {
 
   //Cadastrar Psicologos
   async cadastrarPsicologos(req, res) {
-    const { nome, email, senha, apresentacao } = req.body
-    const newSenha = bcrypt.hashSync(senha, 10)
-    const novoPsicologo = await Psicologos.create({
-      nome,
-      email,
-      senha: newSenha,
-      apresentacao
-    })
+    try {
+      const { nome, email, senha, apresentacao } = req.body
+      const newSenha = bcrypt.hashSync(senha, 10)
+      const novoPsicologo = await Psicologos.create({
+        nome,
+        email,
+        senha: newSenha,
+        apresentacao
+      })
 
-    res.status(201).json(novoPsicologo)
+      if (!novoPsicologo) {
+        res.status(400).json('Houve um erro na requisição.')
+      } else {
+        res.status(201).json(novoPsicologo)
+      }
+    } catch (error) {
+      res.status(400).json({ error })
+    }
   },
 
   //Atualizar Psicologos

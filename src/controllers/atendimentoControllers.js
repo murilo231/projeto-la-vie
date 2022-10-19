@@ -4,7 +4,7 @@ const atendimentosController = {
   listarAtendimentos: async (req, res) => {
     try {
       const listaAtendimentos = await Atendimentos.findAll({
-        // include: [{model: Psicologos},],
+        include: [{ model: Psicologos }]
       })
 
       return res.status(200).json(listaAtendimentos)
