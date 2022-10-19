@@ -7,11 +7,11 @@ email varchar(45) unique,
 idade varchar(3)
 );
 
-create table psicologo (
+create table psicologos (
 id int primary key auto_increment not null,
 nome varchar(100),
 email varchar(45) unique,
-senha varchar(20),
+senha varchar(60),
  apresentacao text
 );
 

@@ -5,17 +5,15 @@ const bcrypt = require("bcryptjs");
 const psicologosController = {
     listarPsicologos: async (req, res) => {
       try {
-      
-      const listadePsicologos = await Psicologos.findAll();
-
-      res.status(200).json(listadePsicologos);
-    } catch {
-      return res.status(200).json();
+      const listaPsicologos = await Psicologos.findAll();
+      res.status(200).json(listaPsicologos);
+    } catch { (error)
+      res.status(404).json({ error });
     }
   }, 
     
   //Listar Psicologos por ID
-  async listarPsicologos(req, res) {
+  async listarPsicologosId(req, res) {
     try {
       const { id } = req.params     
       const listaDePsicologos = await Psicologos.findAll({
@@ -78,23 +76,19 @@ const psicologosController = {
       try
       {       
       const { id } = req.params
-
       const deletandoPsicologo = await Psicologos.destroy({
         where: {
           id,
         },
       });
-
       if(!deletandoPsicologo) {
         res.status(404).json("Id não encontrado")  
       }
       else {
-        res.status(204).json
-
-      }
-    
+        res.status(204).json("Psicólogo excluído com sucesso");
+      }    
       } catch (error) {
-        return res.status(400).json({error})
+        return res.status(400).json({error});
       }
   }
 };    
