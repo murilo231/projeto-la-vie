@@ -1,9 +1,17 @@
 const db = require('../database/db')
 const { DataTypes } = require('sequelize')
+const Paciente = require('./Paciente')
 
 const Atendimentos = db.define(
   'Atendimentos',
   {
+    paciente_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Paciente,
+        key: 'id'
+      }
+    },
     atendimento_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,13 +22,6 @@ const Atendimentos = db.define(
     },
     observacao: {
       type: DataTypes.STRING
-    },
-    paciente_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Pacientes,
-        key: 'id'
-      }
     }
   },
   {

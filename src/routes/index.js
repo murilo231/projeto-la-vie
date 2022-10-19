@@ -1,4 +1,5 @@
 const express = require('express')
+const auth = require('../middlewares/auth')
 const pacientesController = require('../controllers/pacientesController')
 const atendimentoController = require('../controllers/atendimentoControllers')
 const routes = express.Router()
