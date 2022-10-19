@@ -1,6 +1,7 @@
 const db = require('../database/db')
 const { DataTypes } = require('sequelize')
 const Paciente = require('./Paciente')
+const Psicologos = require('./Psicologos')
 
 const Atendimentos = db.define(
   'Atendimentos',
@@ -8,14 +9,18 @@ const Atendimentos = db.define(
     psicologo_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: Paciente,
+        model: Psicologos,
         key: 'id'
       }
     },
     paciente_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      references: {
+        model: Paciente,
+        key: 'id'
+      }
     },
     data_atendimento: {
       type: DataTypes.DATE

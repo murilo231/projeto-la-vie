@@ -1,10 +1,10 @@
-const Atendimentos = require('../../src/models/atendimento')
+const { Atendimentos, Psicologo } = require('../models')
 
 const atendimentosController = {
   listarAtendimentos: async (req, res) => {
     try {
       const listaAtendimentos = await Atendimentos.findAll({
-        include: [{ model: Psicologos }]
+        include: Psicologo
       })
 
       return res.status(200).json(listaAtendimentos)

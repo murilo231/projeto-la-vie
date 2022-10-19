@@ -22,6 +22,6 @@ const Paciente = db.define('paciente', {
   }
 })
 
-Paciente.sync()
+// Paciente.sync()
 
 module.exports = Paciente
