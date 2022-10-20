@@ -92,7 +92,7 @@ const psicologosController = {
       if (!deletandoPsicologo) {
         res.status(404).json('Id não encontrado')
       } else {
-        res.sendStatus(204).json('Psicólogo excluído com sucesso')
+        res.sendStatus(204)
       }
     } catch (error) {
       return res.status(400).json({ error })

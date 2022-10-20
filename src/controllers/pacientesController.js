@@ -94,7 +94,7 @@ const pacientesController = {
       if (!deletar) {
         res.status(404).json('Id não encontrado.')
       } else {
-        res.sendStatus(204).json('Paciente excluído com sucesso!')
+        res.sendStatus(204)
       }
     } catch (error) {
       res.status(404).json({ error })
