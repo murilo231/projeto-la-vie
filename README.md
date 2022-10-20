@@ -1,6 +1,6 @@
-# :construction: Projeto em Construção :construction:
+# :heavy_check_mark: Projeto Finalizado :heavy_check_mark:
 
-La Vie - Desafio 3 - Gama Academy
+## La Vie - Desafio 3 - Gama Academy
 
 Foi solicitado a criação de uma API para melhor atender, agilizar e documentar todas as consultas da clínica de saúde mental La Vie, criada por amigos psicólogos para oferecer diversos tipos de terapia aos seus pacientes.
 
@@ -11,6 +11,11 @@ Para executá-lo, primeiramente é necessário informar e direcionar a um banco 
 Após feito isso, basta digitar no node o comando "npm run start" para iniciar o projeto junto ao nodemon.
 
 ## Documentação da API
+
+Clique no botão abaixo para ser redirecionado a documentação pelo Insomnia
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=La%20Vie%20-%20Clinica&uri=https%3A%2F%2Fraw.githubusercontent.com%2FHudsonMenezes%2Fdesafio3-lavie-gamaacademy%2Fmaster%2Fdocs%2Finsomnia.json)
+
 
 ## API
 
